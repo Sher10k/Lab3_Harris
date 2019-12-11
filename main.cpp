@@ -13,7 +13,7 @@ using namespace cv;
 int main()  // int argc, char *argv[]
 {
     // --- Read image
-    Mat img = imread( "image_harris.jpg" );
+    Mat img = imread( "../Lab3_Harris/image_harris.jpg" );
     imshow( "image", img );
     
     
@@ -29,7 +29,7 @@ int main()  // int argc, char *argv[]
     normalize( corners_cv, corners_cv_norm, 0, 255, NORM_MINMAX, CV_32FC1 );
     convertScaleAbs( corners_cv_norm, dst_norm_scaled );
     imshow( "opnecv corners", dst_norm_scaled );
-    imwrite( "dst_norm_scaled.png", dst_norm_scaled );
+    imwrite( "../Lab3_Harris/dst_norm_scaled.png", dst_norm_scaled );
     
     // --- Drawing a circle around corners
     Mat img_corners = Mat( img.size(), img.type(), img.data );
@@ -39,7 +39,7 @@ int main()  // int argc, char *argv[]
             if(  corners_cv_norm.at<float>(j,i) > thresh )
                circle( img_corners, Point( i, j ), 4,  Scalar(255, 0, 0), 1, LINE_4, 0 );
     imshow( "corners on image", img_corners );
-    imwrite( "img_corners.png", img_corners );
+    imwrite( "../Lab3_Harris/img_corners.png", img_corners );
     
     // --- --- Our Harris Detector Implementation
     
